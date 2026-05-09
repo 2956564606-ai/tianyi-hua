@@ -1,0 +1,1297 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tianyi HUA — Portfolio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,600;0,9..144,900;1,9..144,400&family=DM+Mono:wght@400;500&family=Outfit:wght@300;400;600&display=swap" rel="stylesheet">
+
+<style>
+  :root {
+    --ink: #1a1a2e;
+    --paper: #f5f0e8;
+    --cream: #ede8dc;
+    --red: #c0392b;
+    --gold: #c9973a;
+    --muted: #7a7369;
+    --soft: #e8e2d6;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--paper);
+    color: var(--ink);
+    font-family: 'Outfit', sans-serif;
+    font-weight: 300;
+    overflow-x: hidden;
+  }
+
+  /* ─── LANGUAGE TOGGLE ─── */
+  .lang-bar {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    padding: 14px 32px;
+    background: var(--ink);
+    gap: 4px;
+  }
+
+  .lang-btn {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.15em;
+    padding: 6px 14px;
+    border: 1px solid rgba(255,255,255,0.3);
+    background: transparent;
+    color: rgba(255,255,255,0.5);
+    cursor: pointer;
+    transition: all 0.2s;
+    text-transform: uppercase;
+  }
+  .lang-btn.active {
+    background: var(--gold);
+    border-color: var(--gold);
+    color: var(--ink);
+  }
+
+  /* ─── HERO ─── */
+  .hero {
+    min-height: 100vh;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    padding-top: 52px;
+  }
+
+  .hero-left {
+    background: var(--ink);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 80px 60px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero-left::before {
+    content: '华';
+    position: absolute;
+    bottom: -60px; right: -40px;
+    font-size: 320px;
+    color: rgba(255,255,255,0.04);
+    font-family: serif;
+    line-height: 1;
+    pointer-events: none;
+  }
+
+  .hero-tag {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.2em;
+    color: var(--gold);
+    text-transform: uppercase;
+    margin-bottom: 24px;
+  }
+
+  .hero-name {
+    font-family: 'Fraunces', serif;
+    font-size: clamp(52px, 6vw, 86px);
+    font-weight: 900;
+    color: #fff;
+    line-height: 0.95;
+    margin-bottom: 8px;
+  }
+
+  .hero-name span {
+    color: var(--gold);
+    font-style: italic;
+  }
+
+  .hero-chinese {
+    font-family: serif;
+    font-size: 28px;
+    color: rgba(255,255,255,0.25);
+    margin-bottom: 36px;
+    letter-spacing: 0.15em;
+  }
+
+  .hero-desc {
+    color: rgba(255,255,255,0.65);
+    font-size: 16px;
+    line-height: 1.7;
+    max-width: 380px;
+    margin-bottom: 40px;
+  }
+
+  .hero-links {
+    display: flex;
+    gap: 16px;
+    flex-wrap: wrap;
+  }
+
+  .btn-primary {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 12px 24px;
+    background: var(--gold);
+    color: var(--ink);
+    font-family: 'DM Mono', monospace;
+    font-size: 12px;
+    letter-spacing: 0.1em;
+    text-decoration: none;
+    text-transform: uppercase;
+    transition: transform 0.2s, box-shadow 0.2s;
+  }
+  .btn-primary:hover { transform: translateY(-2px); box-shadow: 4px 4px 0 rgba(201,151,58,0.3); }
+
+  .btn-outline {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 12px 24px;
+    border: 1px solid rgba(255,255,255,0.25);
+    color: rgba(255,255,255,0.7);
+    font-family: 'DM Mono', monospace;
+    font-size: 12px;
+    letter-spacing: 0.1em;
+    text-decoration: none;
+    text-transform: uppercase;
+    transition: all 0.2s;
+  }
+  .btn-outline:hover { border-color: var(--gold); color: var(--gold); }
+
+  .hero-right {
+    background: var(--cream);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 80px 60px;
+    position: relative;
+  }
+
+  .avatar-wrap {
+    width: 160px;
+    height: 160px;
+    border-radius: 50%;
+    overflow: hidden;
+    border: 3px solid var(--gold);
+    margin-bottom: 36px;
+    flex-shrink: 0;
+  }
+  .avatar-wrap img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .about-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.2em;
+    color: var(--gold);
+    text-transform: uppercase;
+    margin-bottom: 16px;
+  }
+
+  .about-text {
+    font-size: 16px;
+    line-height: 1.75;
+    color: var(--muted);
+    margin-bottom: 32px;
+  }
+
+  .info-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+  }
+
+  .info-item {
+    background: var(--soft);
+    padding: 16px;
+  }
+
+  .info-item-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.15em;
+    color: var(--muted);
+    text-transform: uppercase;
+    margin-bottom: 6px;
+  }
+
+  .info-item-val {
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--ink);
+  }
+
+  /* ─── SECTIONS ─── */
+  section {
+    padding: 96px 0;
+  }
+
+  .container {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 40px;
+  }
+
+  .section-header {
+    display: flex;
+    align-items: baseline;
+    gap: 20px;
+    margin-bottom: 56px;
+  }
+
+  .section-num {
+    font-family: 'DM Mono', monospace;
+    font-size: 12px;
+    color: var(--gold);
+    letter-spacing: 0.1em;
+  }
+
+  .section-title {
+    font-family: 'Fraunces', serif;
+    font-size: clamp(32px, 4vw, 52px);
+    font-weight: 900;
+    line-height: 1;
+    color: var(--ink);
+  }
+
+  .section-line {
+    flex: 1;
+    height: 1px;
+    background: var(--soft);
+  }
+
+  /* ─── SKILLS ─── */
+  .skills-section { background: var(--ink); color: #fff; }
+
+  .skills-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2px;
+  }
+
+  .skill-card {
+    background: rgba(255,255,255,0.04);
+    padding: 32px 28px;
+    transition: background 0.2s;
+    position: relative;
+    overflow: hidden;
+  }
+  .skill-card:hover { background: rgba(255,255,255,0.08); }
+
+  .skill-icon {
+    font-size: 28px;
+    margin-bottom: 16px;
+    display: block;
+  }
+
+  .skill-cat {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.15em;
+    color: var(--gold);
+    text-transform: uppercase;
+    margin-bottom: 12px;
+  }
+
+  .skill-name {
+    font-family: 'Fraunces', serif;
+    font-size: 22px;
+    font-weight: 600;
+    color: #ffffff;
+    margin-bottom: 12px;
+  }
+
+  .skill-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+  }
+
+  .tag {
+    font-family: 'DM Mono', monospace;
+    font-size: 15px;
+    padding: 4px 10px;
+    border: 1px solid rgba(255,255,255,0.15);
+    color: rgba(21, 151, 65, 0.6);
+    letter-spacing: 0.05em;
+  }
+
+  /* ─── EXPERIENCE / EDUCATION ─── */
+  .timeline { display: flex; flex-direction: column; gap: 0; }
+
+  .timeline-item {
+    display: grid;
+    grid-template-columns: 180px 1fr;
+    gap: 40px;
+    padding: 40px 0;
+    border-bottom: 1px solid var(--soft);
+  }
+  .timeline-item:first-child { padding-top: 0; }
+
+  .tl-date {
+    font-family: 'DM Mono', monospace;
+    font-size: 12px;
+    color: var(--muted);
+    letter-spacing: 0.08em;
+    padding-top: 4px;
+    line-height: 1.5;
+  }
+
+  .tl-dot {
+    width: 8px; height: 8px;
+    background: var(--gold);
+    border-radius: 50%;
+    margin-top: 8px;
+    flex-shrink: 0;
+  }
+
+  .tl-body { position: relative; }
+
+  .tl-tag {
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.15em;
+    color: var(--gold);
+    text-transform: uppercase;
+    margin-bottom: 8px;
+  }
+
+  .tl-title {
+    font-family: 'Fraunces', serif;
+    font-size: 26px;
+    font-weight: 700;
+    color: var(--ink);
+    margin-bottom: 4px;
+  }
+
+  .tl-sub {
+    font-size: 14px;
+    color: var(--muted);
+    margin-bottom: 16px;
+    font-weight: 400;
+  }
+
+  .tl-desc {
+    font-size: 15px;
+    line-height: 1.75;
+    color: #555;
+    margin-bottom: 16px;
+  }
+
+  .tl-scores {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 12px;
+  }
+
+  .score-pill {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    padding: 5px 12px;
+    background: var(--soft);
+    color: var(--ink);
+    display: flex;
+    gap: 8px;
+    align-items: center;
+  }
+
+  .score-val {
+    color: var(--gold);
+    font-weight: 500;
+  }
+
+  /* ─── PROJECTS ─── */
+  .projects-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2px;
+  }
+
+  .proj-card {
+    background: var(--cream);
+    padding: 40px;
+    transition: background 0.2s;
+    position: relative;
+    overflow: hidden;
+  }
+  .proj-card::after {
+    content: '';
+    position: absolute;
+    bottom: 0; left: 0;
+    width: 0;
+    height: 3px;
+    background: var(--gold);
+    transition: width 0.3s;
+  }
+  .proj-card:hover::after { width: 100%; }
+
+  .proj-num {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    color: var(--gold);
+    letter-spacing: 0.15em;
+    margin-bottom: 20px;
+  }
+
+  .proj-title {
+    font-family: 'Fraunces', serif;
+    font-size: 26px;
+    font-weight: 700;
+    color: var(--ink);
+    margin-bottom: 12px;
+    line-height: 1.15;
+  }
+
+  .proj-desc {
+    font-size: 15px;
+    line-height: 1.7;
+    color: var(--muted);
+    margin-bottom: 24px;
+  }
+
+  /* ─── LANGUAGES ─── */
+  .lang-section { background: var(--cream); }
+
+  .lang-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2px;
+  }
+
+  .lang-card {
+    background: var(--paper);
+    padding: 36px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .lang-flag {
+    font-size: 36px;
+    margin-bottom: 4px;
+  }
+
+  .lang-name {
+    font-family: 'Fraunces', serif;
+    font-size: 28px;
+    font-weight: 700;
+    color: var(--ink);
+  }
+
+  .lang-level {
+    font-family: 'DM Mono', monospace;
+    font-size: 12px;
+    color: var(--gold);
+    letter-spacing: 0.1em;
+  }
+
+  .lang-note {
+    font-size: 14px;
+    color: var(--muted);
+    line-height: 1.5;
+  }
+
+  .lang-bar-wrap {
+    height: 4px;
+    background: var(--soft);
+    margin-top: 8px;
+  }
+
+  .lang-bar-fill {
+    height: 100%;
+    background: var(--gold);
+  }
+
+  /* ─── INTERESTS ─── */
+  .interests-flex {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+
+  .interest-chip {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 14px 24px;
+    background: var(--cream);
+    font-size: 15px;
+    font-weight: 400;
+    color: var(--ink);
+    border: 1px solid transparent;
+    transition: border-color 0.2s;
+  }
+  .interest-chip:hover { border-color: var(--gold); }
+
+  /* ─── CONTACT ─── */
+  .contact-section { background: var(--ink); }
+
+  .contact-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 60px;
+    align-items: start;
+  }
+
+  .contact-headline {
+    font-family: 'Fraunces', serif;
+    font-size: clamp(40px, 5vw, 72px);
+    font-weight: 900;
+    color: #fff;
+    line-height: 1;
+    margin-bottom: 24px;
+  }
+
+  .contact-headline em {
+    color: var(--gold);
+    font-style: italic;
+  }
+
+  .contact-sub {
+    color: rgba(255,255,255,0.5);
+    font-size: 16px;
+    line-height: 1.7;
+  }
+
+  .contact-links {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    margin-top: 40px;
+  }
+
+  .contact-link {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    padding: 20px 24px;
+    background: rgba(255,255,255,0.04);
+    text-decoration: none;
+    transition: background 0.2s;
+    border: 1px solid transparent;
+  }
+  .contact-link:hover { background: rgba(255,255,255,0.08); border-color: var(--gold); }
+
+  .cl-icon {
+    width: 40px; height: 40px;
+    background: var(--gold);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+    flex-shrink: 0;
+  }
+
+  .cl-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.15em;
+    color: var(--muted);
+    text-transform: uppercase;
+    margin-bottom: 4px;
+  }
+
+  .cl-val {
+    font-size: 14px;
+    color: rgba(255,255,255,0.8);
+  }
+
+  /* ─── FOOTER ─── */
+  footer {
+    background: var(--ink);
+    border-top: 1px solid rgba(255,255,255,0.06);
+    padding: 28px 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  footer span {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    color: rgba(255,255,255,0.25);
+    letter-spacing: 0.08em;
+  }
+
+  /* ─── NAV ─── */
+  nav {
+    position: fixed;
+    left: 32px;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 50;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .nav-dot {
+    width: 6px; height: 6px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.3);
+    cursor: pointer;
+    transition: all 0.2s;
+    position: relative;
+  }
+  .nav-dot.active { background: var(--gold); width: 6px; height: 20px; border-radius: 3px; }
+  .nav-dot::after {
+    content: attr(data-label);
+    position: absolute;
+    left: 16px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.1em;
+    white-space: nowrap;
+    opacity: 0;
+    color: rgba(255,255,255,0.6);
+    transition: opacity 0.2s;
+    pointer-events: none;
+  }
+  .nav-dot:hover::after { opacity: 1; }
+
+  /* ─── ANIMATIONS ─── */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(24px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  .hero-left > * {
+    opacity: 0;
+    animation: fadeUp 0.6s ease forwards;
+  }
+  .hero-left .hero-tag  { animation-delay: 0.1s; }
+  .hero-left .hero-name { animation-delay: 0.2s; }
+  .hero-left .hero-chinese { animation-delay: 0.3s; }
+  .hero-left .hero-desc { animation-delay: 0.4s; }
+  .hero-left .hero-links { animation-delay: 0.5s; }
+
+  /* ─── RESPONSIVE ─── */
+  @media (max-width: 768px) {
+    .hero { grid-template-columns: 1fr; min-height: auto; }
+    .hero-right { padding: 48px 32px; }
+    .hero-left { padding: 80px 32px 48px; }
+    .skills-grid, .projects-grid, .lang-grid, .contact-grid { grid-template-columns: 1fr; }
+    .timeline-item { grid-template-columns: 1fr; gap: 8px; }
+    nav { display: none; }
+    .info-grid { grid-template-columns: 1fr; }
+  }
+
+  /* ─── LANG SHOW/HIDE ─── */
+  [data-lang="en"] { display: none; }
+  body.lang-en [data-lang="en"] { display: block; }
+  body.lang-en [data-lang="fr"] { display: none; }
+  
+  span[data-lang], a[data-lang], li[data-lang] { display: inline; }
+  body.lang-en span[data-lang="fr"],
+  body.lang-en a[data-lang="fr"],
+  body.lang-en li[data-lang="fr"] { display: none; }
+  body.lang-en span[data-lang="en"],
+  body.lang-en a[data-lang="en"],
+  body.lang-en li[data-lang="en"] { display: inline; }
+  span[data-lang="en"] { display: none; }
+</style>
+</head>
+<body>
+
+<!-- Language bar -->
+<div class="lang-bar">
+  <button class="lang-btn active" id="btn-fr" onclick="setLang('fr')">FR</button>
+  <button class="lang-btn" id="btn-en" onclick="setLang('en')">EN</button>
+</div>
+
+<!-- Side nav -->
+<nav id="sidenav">
+  <div class="nav-dot active" data-label="Home" data-section="hero" onclick="scrollTo('hero')"></div>
+  <div class="nav-dot" data-label="Skills" data-section="skills" onclick="scrollTo('skills')"></div>
+  <div class="nav-dot" data-label="Education" data-section="education" onclick="scrollTo('education')"></div>
+  <div class="nav-dot" data-label="Projects" data-section="projects" onclick="scrollTo('projects')"></div>
+  <div class="nav-dot" data-label="Languages" data-section="languages" onclick="scrollTo('languages')"></div>
+  <div class="nav-dot" data-label="Contact" data-section="contact" onclick="scrollTo('contact')"></div>
+</nav>
+
+<!-- ══════════════ HERO ══════════════ -->
+<section class="hero" id="hero">
+  <div class="hero-left">
+    <div class="hero-tag">
+      <span data-lang="fr">Portfolio · Développeuse en formation</span>
+      <span data-lang="en">Portfolio · Aspiring Developer</span>
+    </div>
+    <h1 class="hero-name">Tianyi<br><span>HUA</span></h1>
+    <div class="hero-chinese">华天意</div>
+    <p class="hero-desc">
+      <span data-lang="fr">Étudiante en informatique à l’Université Paris-Saclay, intéressée par le développement logiciel, les systèmes et les interfaces web modernes.  
+J’aime transformer des idées abstraites en expériences interactives et fonctionnelles.</span>
+      <span data-lang="en">Computer science student at Université Paris-Saclay, interested in software development, systems, and modern web interfaces.  
+I enjoy turning abstract ideas into interactive and functional experiences.</span>
+    </p>
+    <div class="hero-links">
+      <a href="mailto:tianyi.hua@universite-paris-saclay.fr" class="btn-primary">
+        ✉ <span data-lang="fr">Me contacter</span><span data-lang="en">Get in touch</span>
+      </a>
+      <a href="https://www.linkedin.com/in/tianyi-hua-9b4a76387/" target="_blank" class="btn-outline">
+        ↗ LinkedIn
+      </a>
+    </div>
+  </div>
+
+  <div class="hero-right">
+    <div class="avatar-wrap">
+      <img src="https://media1.giphy.com/media/v1.Y2lkPTc5NDFmZGM2cGloa290YmJtemhpODBwZjVydmVqb3RybDkwaWxkbm44aHlpYjVxZiZlcD12MV9naWZzX3NlYXJjaCZjdD1n/lptIayuGHV9Utu3iTv/giphy.gif" alt="Tianyi HUA">
+    </div>
+    <div class="about-label">
+      <span data-lang="fr">À propos</span>
+      <span data-lang="en">About me</span>
+    </div>
+    <p class="about-text">
+      <span data-lang="fr">Originaire de Shanghai 🇨🇳, je poursuis aujourd’hui mes études en informatique à l’Université Paris-Saclay dans un environnement international et multiculturel.  
+Mon parcours m’a permis de développer à la fois une approche analytique, une forte capacité d’adaptation et une réelle curiosité pour les technologies numériques.</span>
+      <span data-lang="en">Originally from Shanghai 🇨🇳, I am currently pursuing computer science studies at Université Paris-Saclay in an international and multicultural environment.  
+My background has helped me develop both analytical thinking, adaptability, and a genuine curiosity for digital technologies.</span>
+    </p>
+    <div class="info-grid">
+      <div class="info-item">
+        <div class="info-item-label"><span data-lang="fr">Formation</span><span data-lang="en">Degree</span></div>
+        <div class="info-item-val">BUT Informatique</div>
+      </div>
+      <div class="info-item">
+        <div class="info-item-label"><span data-lang="fr">Université</span><span data-lang="en">University</span></div>
+        <div class="info-item-val">Paris-Saclay</div>
+      </div>
+      <div class="info-item">
+        <div class="info-item-label"><span data-lang="fr">Origine</span><span data-lang="en">Origin</span></div>
+        <div class="info-item-val">Shanghai, Chine</div>
+      </div>
+      <div class="info-item">
+        <div class="info-item-label"><span data-lang="fr">Objectif</span><span data-lang="en">Goal</span></div>
+        <div class="info-item-val">
+          <span data-lang="fr">Stage été 2026</span>
+          <span data-lang="en">Summer internship</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════ SKILLS ══════════════ -->
+<section class="skills-section" id="skills">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-num">01</span>
+      <h2 class="section-title" style="color:#fff">
+        <span data-lang="fr">Compétences</span>
+        <span data-lang="en">Skills</span>
+      </h2>
+      <div class="section-line" style="background:rgba(255,255,255,0.08)"></div>
+    </div>
+
+    <div class="skills-grid">
+      <div class="skill-card">
+        <span class="skill-icon">⚙️</span>
+        <div class="skill-cat">
+          <span data-lang="fr">Programmation</span>
+          <span data-lang="en">Programming</span>
+        </div>
+        <div class="skill-name">Languages</div>
+        <div class="skill-tags">
+          <span class="tag">C++</span>
+          <span class="tag">Java</span>
+          <span class="tag">SQL</span>
+          <span class="tag">HTML/CSS</span>
+        </div>
+      </div>
+
+      <div class="skill-card">
+        <span class="skill-icon">🌐</span>
+        <div class="skill-cat">
+          <span data-lang="fr">Développement web</span>
+          <span data-lang="en">Web Development</span>
+        </div>
+        <div class="skill-name">Frontend</div>
+        <div class="skill-tags">
+          <span class="tag">HTML5</span>
+          <span class="tag">CSS3</span>
+          <span class="tag">
+            <span data-lang="fr">Design responsive</span>
+            <span data-lang="en">Responsive design</span>
+          </span>
+        </div>
+      </div>
+
+      <div class="skill-card">
+        <span class="skill-icon">🖥️</span>
+        <div class="skill-cat">
+          <span data-lang="fr">Systèmes</span>
+          <span data-lang="en">Systems</span>
+        </div>
+        <div class="skill-name">Linux & HW</div>
+        <div class="skill-tags">
+          <span class="tag">Linux CLI</span>
+          <span class="tag">Raspberry Pi</span>
+          <span class="tag">
+            <span data-lang="fr">Circuits intégrés</span>
+            <span data-lang="en">Integrated circuits</span>
+          </span>
+        </div>
+      </div>
+
+      <div class="skill-card">
+        <span class="skill-icon">📊</span>
+        <div class="skill-cat">
+          <span data-lang="fr">Données</span>
+          <span data-lang="en">Data</span>
+        </div>
+        <div class="skill-name">
+          <span data-lang="fr">Bases de données</span>
+          <span data-lang="en">Databases</span>
+        </div>
+        <div class="skill-tags">
+          <span class="tag">SQL</span>
+          <span class="tag">
+            <span data-lang="fr">Modélisation</span>
+            <span data-lang="en">Modelling</span>
+          </span>
+        </div>
+      </div>
+
+      <div class="skill-card">
+        <span class="skill-icon">🧮</span>
+        <div class="skill-cat">
+          <span data-lang="fr">Fondamentaux</span>
+          <span data-lang="en">Fundamentals</span>
+        </div>
+        <div class="skill-name">Algo & Math</div>
+        <div class="skill-tags">
+          <span class="tag">
+            <span data-lang="fr">Algorithmique</span>
+            <span data-lang="en">Algorithms</span>
+          </span>
+          <span class="tag">
+            <span data-lang="fr">Modélisation mathématique</span>
+            <span data-lang="en">Math modelling</span>
+          </span>
+        </div>
+      </div>
+
+      <div class="skill-card">
+        <span class="skill-icon">🤝</span>
+        <div class="skill-cat">Soft skills</div>
+        <div class="skill-name">
+          <span data-lang="fr">Savoir-être</span>
+          <span data-lang="en">People skills</span>
+        </div>
+        <div class="skill-tags">
+          <span class="tag">
+            <span data-lang="fr">Créativité</span>
+            <span data-lang="en">Creativity</span>
+          </span>
+          <span class="tag">
+            <span data-lang="fr">Esprit critique</span>
+            <span data-lang="en">Critical thinking</span>
+          </span>
+          <span class="tag">
+            <span data-lang="fr">Coopération</span>
+            <span data-lang="en">Teamwork</span>
+          </span>
+          <span class="tag">
+            <span data-lang="fr">Réactivité</span>
+            <span data-lang="en">Responsiveness</span>
+          </span>
+          <span class="tag">
+            <span data-lang="fr">Résolution de problèmes</span>
+            <span data-lang="en">Problem solving</span>
+          </span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════ EDUCATION ══════════════ -->
+<section id="education">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-num">02</span>
+      <h2 class="section-title">
+        <span data-lang="fr">Formation</span>
+        <span data-lang="en">Education</span>
+      </h2>
+      <div class="section-line"></div>
+    </div>
+
+    <div class="timeline">
+      <div class="timeline-item">
+        <div class="tl-date">2025 – 2028<br><span style="color:var(--gold)">
+          <span data-lang="fr">En cours</span>
+          <span data-lang="en">Ongoing</span>
+        </span></div>
+        <div class="tl-body">
+          <div class="tl-tag">IUT d'Orsay</div>
+          <div class="tl-title">
+            <span data-lang="fr">BUT Informatique</span>
+            <span data-lang="en">Computer Science Degree</span>
+          </div>
+          <div class="tl-sub">Université Paris-Saclay — Orsay, France</div>
+          <p class="tl-desc">
+            <span data-lang="fr">Formation orientée vers la conception logicielle, le développement web et la résolution de problèmes algorithmiques à travers des projets concrets.  
+Travail en équipe, programmation et approche pratique du développement informatique.</span>
+            <span data-lang="en">Program focused on software design, web development, and algorithmic problem solving through hands-on projects.  
+Collaborative work, programming, and practical approaches to software development.</span>
+          </p>
+          <div class="tl-scores">
+            <div class="score-pill">
+              <span data-lang="fr">Développement logiciel</span>
+              <span data-lang="en">Software Dev</span>
+              <span class="score-val">18/20</span>
+            </div>
+            <div class="score-pill">
+              <span data-lang="fr">Algorithmique</span>
+              <span data-lang="en">Algorithms</span>
+              <span class="score-val">16/20</span>
+            </div>
+            <div class="score-pill">
+              <span data-lang="fr">Bases de données</span>
+              <span data-lang="en">Databases</span>
+              <span class="score-val">16/20</span>
+            </div>
+            <div class="score-pill">
+              <span data-lang="fr">Développement web</span>
+              <span data-lang="en">Web Dev</span>
+              <span class="score-val">15/20</span>
+            </div>
+            <div class="score-pill">
+              <span data-lang="fr">Réseaux</span>
+              <span data-lang="en">Networks</span>
+              <span class="score-val">14/20</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="timeline-item">
+        <div class="tl-date">2021 – 2024</div>
+        <div class="tl-body">
+          <div class="tl-tag">
+            <span data-lang="fr">Lycée Weiyu · Shanghai</span>
+            <span data-lang="en">Weiyu High School · Shanghai</span>
+          </div>
+          <div class="tl-title">
+            <span data-lang="fr">Baccalauréat scientifique</span>
+            <span data-lang="en">Science Baccalaureate</span>
+          </div>
+          <div class="tl-sub">Shanghai, Chine 🇨🇳</div>
+          <p class="tl-desc">
+            <span data-lang="fr">Spécialité scientifique avec une forte orientation mathématiques et physique. Participation active à des projets de recherche et concours scientifiques.</span>
+            <span data-lang="en">Science specialization with a strong focus on mathematics and physics. Active participation in research projects and science competitions.</span>
+          </p>
+          <div class="tl-scores">
+            <div class="score-pill">🏆 <span data-lang="fr">2ᵉ prix — Concours d'innovation (circuits intégrés)</span><span data-lang="en">2nd prize — Innovation competition (integrated circuits)</span></div>
+            <div class="score-pill">📐 <span data-lang="fr">Concours de modélisation mathématique</span><span data-lang="en">Math modelling competition</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════ PROJECTS ══════════════ -->
+<section id="projects" style="background:var(--cream)">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-num">03</span>
+      <h2 class="section-title">
+        <span data-lang="fr">Projets</span>
+        <span data-lang="en">Projects</span>
+      </h2>
+      <div class="section-line"></div>
+    </div>
+
+    <div class="projects-grid">
+      <div class="proj-card">
+        <div class="proj-num">01 — C++</div>
+        <div class="proj-title">
+          <span data-lang="fr">Jeu 2D en C++</span>
+          <span data-lang="en">2D Game in C++</span>
+        </div>
+        <p class="proj-desc">
+          <span data-lang="fr">Développement d’un jeu 2D en C++ reposant sur une architecture orientée objet.  
+Mise en place d’un système de progression par niveaux, de gestion des collisions et d’interactions dynamiques avec les ennemis et objets du jeu.  
+Refonte d’une partie de la logique interne afin d’améliorer la lisibilité et la maintenabilité du code.</span>
+          <span data-lang="en">Development of a 2D game in C++ based on an object-oriented architecture.  
+Implementation of level progression systems, collision management, and dynamic interactions with enemies and game objects.  
+Refactored part of the internal logic to improve code readability and maintainability.</span>
+        </p>
+        <div class="skill-tags">
+          <span class="tag">C++</span>
+          <span class="tag">OOP</span>
+          <span class="tag">Code::Blocks</span>
+          <span class="tag">Game Logic</span>
+        </div>
+      </div>
+
+      <div class="proj-card">
+        <div class="proj-num">02 — HTML/CSS</div>
+        <div class="proj-title">Viatopia</div>
+        <p class="proj-desc">
+          <span data-lang="fr">Conception et intégration d’un site vitrine responsive pour une agence de voyage fictive.  
+Travail centré sur l’expérience utilisateur, l’adaptation multi-écran et l’organisation visuelle du contenu à l’aide de HTML et CSS.</span>
+          <span data-lang="en">Design and development of a responsive showcase website for a fictional travel agency.  
+Focused on user experience, multi-device responsiveness, and visual content organization using HTML and CSS.</span>
+        </p>
+        <div class="skill-tags">
+          <span class="tag">HTML5</span>
+          <span class="tag">CSS3</span>
+          <span class="tag">
+            <span data-lang="fr">Design responsive</span>
+            <span data-lang="en">Responsive</span>
+          </span>
+          <span class="tag">UX/UI</span>
+        </div>
+      </div>
+
+      <div class="proj-card">
+        <div class="proj-num">03 — Hardware</div>
+        <div class="proj-title">
+          <span data-lang="fr">Circuits intégrés</span>
+          <span data-lang="en">Integrated Circuits</span>
+        </div>
+        <p class="proj-desc">
+          <span data-lang="fr">Projet de recherche sur la conception de circuits intégrés réalisé au lycée. Récompensé d'un 2ᵉ prix lors d'un concours d'innovation scientifique à Shanghai.</span>
+          <span data-lang="en">Research project on integrated circuit design completed during high school. Awarded 2nd prize at a scientific innovation competition in Shanghai.</span>
+        </p>
+        <div class="skill-tags">
+          <span class="tag">
+            <span data-lang="fr">Électronique</span>
+            <span data-lang="en">Electronics</span>
+          </span>
+          <span class="tag">
+            <span data-lang="fr">Recherche</span>
+            <span data-lang="en">Research</span>
+          </span>
+          <span class="tag">🏆 2nd prize</span>
+        </div>
+      </div>
+
+      <div class="proj-card">
+        <div class="proj-num">04 — Math</div>
+        <div class="proj-title">
+          <span data-lang="fr">Modélisation mathématique</span>
+          <span data-lang="en">Math Modelling</span>
+        </div>
+        <p class="proj-desc">
+          <span data-lang="fr">Participation à un concours de modélisation mathématique, développant des capacités de formalisation de problèmes réels en modèles analytiques rigoureux.</span>
+          <span data-lang="en">Participation in a math modelling competition, developing strong skills in translating real-world problems into rigorous analytical frameworks.</span>
+        </p>
+        <div class="skill-tags">
+          <span class="tag">
+            <span data-lang="fr">Mathématiques</span>
+            <span data-lang="en">Mathematics</span>
+          </span>
+          <span class="tag">
+            <span data-lang="fr">Modélisation</span>
+            <span data-lang="en">Modelling</span>
+          </span>
+          <span class="tag">
+            <span data-lang="fr">Analyse</span>
+            <span data-lang="en">Analysis</span>
+          </span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════ LANGUAGES ══════════════ -->
+<section class="lang-section" id="languages">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-num">04</span>
+      <h2 class="section-title">
+        <span data-lang="fr">Langues</span>
+        <span data-lang="en">Languages</span>
+      </h2>
+      <div class="section-line"></div>
+    </div>
+
+    <div class="lang-grid">
+      <div class="lang-card">
+        <div class="lang-flag">🇨🇳</div>
+        <div class="lang-name">
+          <span data-lang="fr">Chinois</span>
+          <span data-lang="en">Chinese</span>
+        </div>
+        <div class="lang-level">
+          <span data-lang="fr">Langue maternelle</span>
+          <span data-lang="en">Native language</span>
+        </div>
+        <div class="lang-bar-wrap"><div class="lang-bar-fill" style="width:100%"></div></div>
+        <div class="lang-note">
+          <span data-lang="fr">Mandarin — pratique quotidienne, niveau natif</span>
+          <span data-lang="en">Mandarin — daily use, native level</span>
+        </div>
+      </div>
+
+      <div class="lang-card">
+        <div class="lang-flag">🇬🇧</div>
+        <div class="lang-name">
+          <span data-lang="fr">Anglais</span>
+          <span data-lang="en">English</span>
+        </div>
+        <div class="lang-level">C1 — IELTS 7/9</div>
+        <div class="lang-bar-wrap"><div class="lang-bar-fill" style="width:85%"></div></div>
+        <div class="lang-note">
+          <span data-lang="fr">Niveau avancé — peut être utilisé comme langue de travail</span>
+          <span data-lang="en">Advanced level — usable as a working language</span>
+        </div>
+      </div>
+
+      <div class="lang-card">
+        <div class="lang-flag">🇫🇷</div>
+        <div class="lang-name">
+          <span data-lang="fr">Français</span>
+          <span data-lang="en">French</span>
+        </div>
+        <div class="lang-level">B1+</div>
+        <div class="lang-bar-wrap"><div class="lang-bar-fill" style="width:55%"></div></div>
+        <div class="lang-note">
+          <span data-lang="fr">Niveau intermédiaire — en cours de perfectionnement à Paris-Saclay</span>
+          <span data-lang="en">Intermediate level — improving daily at Paris-Saclay</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════ INTERESTS ══════════════ -->
+<section id="interests">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-num">05</span>
+      <h2 class="section-title">
+        <span data-lang="fr">Centres d'intérêt</span>
+        <span data-lang="en">Interests</span>
+      </h2>
+      <div class="section-line"></div>
+    </div>
+
+    <div class="interests-flex">
+      <div class="interest-chip">🖋️ <span data-lang="fr">Calligraphie chinoise</span><span data-lang="en">Chinese calligraphy</span></div>
+      <div class="interest-chip">🏊 <span data-lang="fr">Natation</span><span data-lang="en">Swimming</span></div>
+      <div class="interest-chip">🏛️ <span data-lang="fr">Visites culturelles & musées</span><span data-lang="en">Cultural visits & museums</span></div>
+      <div class="interest-chip">🌿 <span data-lang="fr">Promenades dans la nature</span><span data-lang="en">Nature walks</span></div>
+      <div class="interest-chip">🌏 <span data-lang="fr">Échanges interculturels</span><span data-lang="en">Intercultural exchange</span></div>
+      <div class="interest-chip">📚 <span data-lang="fr">Apprentissage des langues</span><span data-lang="en">Language learning</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════ CONTACT ══════════════ -->
+<section class="contact-section" id="contact">
+  <div class="container">
+    <div class="contact-grid">
+      <div>
+        <h2 class="contact-headline">
+          <span data-lang="fr">Entrons en <em>contact</em></span>
+          <span data-lang="en">Let's <em>connect</em></span>
+        </h2>
+        <p class="contact-sub">
+          <span data-lang="fr">Je suis à la recherche d'un stage dans le domaine informatique pour l'été 2026. N'hésitez pas à me contacter !</span>
+          <span data-lang="en">I am looking for a summer 2026 internship in the tech field. Feel free to reach out!</span>
+        </p>
+      </div>
+
+      <div class="contact-links">
+        <a href="mailto:tianyi.hua@universite-paris-saclay.fr" class="contact-link">
+          <div class="cl-icon">✉</div>
+          <div>
+            <div class="cl-label">Email</div>
+            <div class="cl-val">tianyi.hua@universite-paris-saclay.fr</div>
+          </div>
+        </a>
+
+        <a href="https://www.linkedin.com/in/tianyi-hua-9b4a76387/" target="_blank" class="contact-link">
+          <div class="cl-icon">in</div>
+          <div>
+            <div class="cl-label">LinkedIn</div>
+            <div class="cl-val">tianyi.hua</div>
+          </div>
+        </a>
+
+        <a href="tel:+8618964557545
+        +33 758636212" class="contact-link">
+          <div class="cl-icon">📞</div>
+          <div>
+            <div class="cl-label">
+              <span data-lang="fr">Téléphone (WeChat)</span>
+              <span data-lang="en">Phone (WeChat)</span>
+            </div>
+            <div class="cl-val">+86 189 6455 7545</div>
+            <div class="cl-val">+33 758636212</div>
+          </div>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <span>© 2026 Tianyi HUA · 华天意</span>
+  <span>Université Paris-Saclay · IUT d'Orsay</span>
+</footer>
+
+<script>
+  function setLang(lang) {
+    document.body.classList.toggle('lang-en', lang === 'en');
+    document.getElementById('btn-fr').classList.toggle('active', lang === 'fr');
+    document.getElementById('btn-en').classList.toggle('active', lang === 'en');
+    localStorage.setItem('lang', lang);
+    // update nav tooltips
+    const labels = {
+      fr: ['Accueil','Compétences','Formation','Projets','Langues','Contact'],
+      en: ['Home','Skills','Education','Projects','Languages','Contact']
+    };
+    document.querySelectorAll('.nav-dot').forEach((d,i) => d.setAttribute('data-label', labels[lang][i]));
+  }
+
+  function scrollTo(id) {
+    document.getElementById(id).scrollIntoView({behavior:'smooth'});
+  }
+
+  // Nav active state
+  const sections = ['hero','skills','education','projects','languages','contact'];
+  const dots = document.querySelectorAll('.nav-dot');
+
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        const idx = sections.indexOf(e.target.id);
+        dots.forEach((d,i) => d.classList.toggle('active', i === idx));
+      }
+    });
+  }, { threshold: 0.4 });
+
+  sections.forEach(id => {
+    const el = document.getElementById(id);
+    if (el) observer.observe(el);
+  });
+
+  // Restore language pref
+  const saved = localStorage.getItem('lang');
+  if (saved) setLang(saved);
+</script>
+</body>
+</html>
